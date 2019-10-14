@@ -4,12 +4,6 @@ import mutations from './mutations';
 
 const state = {
   includeComponents: [
-    'Home',
-    'HomeParentList',
-    'HomeChildList',
-    'Mall',
-    'Cart',
-    'User',
   ],
 };
 
