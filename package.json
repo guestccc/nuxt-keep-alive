@@ -1,11 +1,16 @@
 {
-  "name": "hello-world",
+  "name": "n-keep-alive",
   "version": "0.1.0",
-  "private": true,
+  "description":"keep-alive in nuxt.js",
+  "main":"lib/vnkalive.umd.min.js",
+  "keyword":"keep-alive keep alive nuxt n-keep-alive nuxt-keep-alive",
+  "author":"guestCcc",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib":"vue-cli-service build --target lib --name vnkalive --dest lib packages/index.js"
   },
   "dependencies": {
     "core-js": "^2.6.5",
