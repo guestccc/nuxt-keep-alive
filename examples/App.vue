@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Nkalive></Nkalive>
+    <NKAlive></NKAlive>
   </div>
 </template>
 

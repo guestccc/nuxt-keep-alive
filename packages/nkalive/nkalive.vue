@@ -15,6 +15,9 @@ export default {
     includeComponents() {
       return this.$store.state.base.includeComponents
     },
+    app(){
+      return this
+    }
   },
 }
 </script>
