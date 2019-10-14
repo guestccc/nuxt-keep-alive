@@ -13,11 +13,8 @@ export default {
   },
   computed: {
     includeComponents() {
-      return this.$store.state.base.includeComponents
+      return this.$store.state[this.$storeModulesName].includeComponents
     },
-    app(){
-      return this
-    }
   },
 }
 </script>
