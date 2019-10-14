@@ -1,6 +1,7 @@
 // 导入颜色选择器组件
 import nkalive from './nkalive'
 import store from './store/base/index';
+import { UPDATE_KEEP_ALIVE_INCLUDES } from './store/base/mutation-types';
 
 // 存储组件列表
 const components = [
@@ -13,7 +14,7 @@ let storeModulesName = 'NKeepAlive'
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function (Vue,option) {
   storeModulesName = option.storeModulesName
-  option.App.store.commit(storeModulesName, {
+  option.App.store.commit(UPDATE_KEEP_ALIVE_INCLUDES, {
     componentName: 'Tesxxxt',
     open: true,
   })
