@@ -1,19 +1,6 @@
 <template>
 <div>
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
-  ccccccccccccccccccccccccccccccccccccccccccc
+  <nuxt-child></nuxt-child>
 </div>
 </template>
 <script>
