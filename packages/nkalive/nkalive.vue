@@ -1,14 +1,20 @@
 <template>
-<div>
-  <nuxt-child></nuxt-child>
-</div>
+  <nuxt-child
+    keep-alive
+    :keep-alive-props="{include: includeComponents}"
+    class="nuxt-child"/>
 </template>
 <script>
 export default {
-  name: "Nkalive",
+  name:"NKAlive",
   data() {
     return {
     };
+  },
+  computed: {
+    includeComponents() {
+      return this.$store.state.base.includeComponents
+    },
   },
 }
 </script>
