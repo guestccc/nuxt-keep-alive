@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NKAlive></NKAlive>
+    <router-view></router-view>
   </div>
 </template>
 
