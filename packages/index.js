@@ -42,6 +42,7 @@ const install = function (Vue,option) {
         )
       }
     } else { // 前进
+      console.info('前进前',routerArr.length,routerArr)
       routerArr.push(from)
       if (isIncludes(to.path)) {
         if (routerArr.some(item => item.fullPath === to.fullPath)) { // 存在参数和路由一样
@@ -57,6 +58,7 @@ const install = function (Vue,option) {
           )
         }
       }
+      console.info('前进后',routerArr.length,routerArr)
     }
     next()
   })
@@ -79,6 +81,7 @@ const install = function (Vue,option) {
         )
       }
     }
+    console.warn(routerArr,'最后路由列表')
   })
 
   
