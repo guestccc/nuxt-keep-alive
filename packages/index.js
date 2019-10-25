@@ -61,7 +61,7 @@ const install = function (Vue,option) {
     next()
   })
   // 路由后置守卫
-  option.App.router.afterEach((to, from) => {
+  option.App.router.afterEach((to) => {
     // console.log('afterEach');
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
     if (to.fullPath === lastRouterItem.fullPath) { // 返回
@@ -69,7 +69,6 @@ const install = function (Vue,option) {
       // 删除最后一个记录
       routerArr = routerArr.splice(routerArr.length - 1, 1)
     } else { // 前进
-      routerArr.push(from)
       if (isIncludes(to.path)) {
         option.App.store.commit(
           UPDATE_KEEP_ALIVE_INCLUDES,
