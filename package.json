@@ -1,6 +1,6 @@
 {
   "name": "n-keep-alive",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "keep-alive in nuxt.js",
   "main": "lib/vnkalive.umd.min.js",
   "keyword": "keep-alive keep alive nuxt n-keep-alive nuxt-keep-alive",
