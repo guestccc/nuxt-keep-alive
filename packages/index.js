@@ -28,6 +28,7 @@ const install = function (Vue,option) {
   option.App.router.beforeEach((to, from, next) => {
     // console.log('beforeEach');
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
+    console.warn(routerArr,'routerArr')
     if (to.fullPath === lastRouterItem.fullPath) { // 返回
       console.info('看看到底有没有清除')
       if (isIncludes(from.path)) {
