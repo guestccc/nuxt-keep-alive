@@ -29,8 +29,6 @@ const install = function (Vue,option) {
     // console.log('beforeEach');
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
     if (to.fullPath === lastRouterItem.fullPath) { // 返回
-      // 删除最后一个记录
-      routerArr = routerArr.splice(routerArr.length - 1, 1)
       if (isIncludes(from.path)) {
         option.App.store.commit(
           UPDATE_KEEP_ALIVE_INCLUDES,
@@ -63,7 +61,10 @@ const install = function (Vue,option) {
   option.App.router.afterEach((to, from) => {
     // console.log('afterEach');
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
-    if (to.fullPath !== lastRouterItem.fullPath) { // 前进
+    if (to.fullPath === lastRouterItem.fullPath) { // 返回
+      // 删除最后一个记录
+      routerArr = routerArr.splice(routerArr.length - 1, 1)
+    } else { // 前进
       routerArr.push(from)
       if (isIncludes(to.path)) {
         option.App.store.commit(
