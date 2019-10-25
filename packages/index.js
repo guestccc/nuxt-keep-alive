@@ -1,4 +1,3 @@
-// 导入颜色选择器组件
 import nkalive from './nkalive'
 import store from './store/base/index';
 import { UPDATE_KEEP_ALIVE_INCLUDES } from './store/base/mutation-types';
@@ -23,12 +22,20 @@ const install = function (Vue,option) {
   function isIncludes(path) {
     return includesArr.some(item => item.path === path)
   }
+  function log(arr,...args) {
+    console.warn('=======================================================');
+    arr.forEach((item) => {
+      console.warn(item);
+    })
+    console.log(args);
+    console.warn('=======================================================');
+  }
   
   // 路由前置守卫
   option.App.router.beforeEach((to, from, next) => {
     // console.log('beforeEach');
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
-    console.warn(routerArr,'routerArr')
+    log(routerArr,'routerArr')
     if (to.fullPath === lastRouterItem.fullPath) { // 返回
       console.info('看看到底有没有清除')
       if (isIncludes(from.path)) {
@@ -42,7 +49,7 @@ const install = function (Vue,option) {
         )
       }
     } else { // 前进
-      console.info('前进前',routerArr.length,routerArr)
+      log(routerArr,'前进前',routerArr.length,)
       routerArr.push(from)
       if (isIncludes(to.path)) {
         if (routerArr.some(item => item.fullPath === to.fullPath)) { // 存在参数和路由一样
@@ -58,7 +65,7 @@ const install = function (Vue,option) {
           )
         }
       }
-      console.info('前进后',routerArr.length,routerArr)
+      log(routerArr,'前进后',routerArr.length)
     }
     next()
   })
@@ -68,8 +75,10 @@ const install = function (Vue,option) {
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
     if (to.fullPath === lastRouterItem.fullPath) { // 返回
       console.log('返回，等进来再删！')
+      log(routerArr,'删除之前',routerArr.length)
       // 删除最后一个记录
-      routerArr = routerArr.splice(routerArr.length - 1, 1)
+      routerArr = routerArr.splice(0,routerArr.length-1)
+      log(routerArr,'删除之后',routerArr.length)
     } else { // 前进
       if (isIncludes(to.path)) {
         option.App.store.commit(
@@ -81,7 +90,7 @@ const install = function (Vue,option) {
         )
       }
     }
-    console.warn(routerArr,'最后路由列表')
+    log(routerArr,'最后路由列表')
   })
 
   
