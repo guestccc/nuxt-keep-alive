@@ -22,24 +22,13 @@ const install = function (Vue,option) {
   function isIncludes(path) {
     return includesArr.some(item => item.path === path)
   }
-  function log(arr,...args) {
-    console.warn('=======================================================');
-    arr.forEach((item) => {
-      console.warn(item);
-    })
-    console.log(args);
-    console.warn('=======================================================');
-  }
   
   // 路由前置守卫
   option.App.router.beforeEach((to, from, next) => {
     // console.log('beforeEach');
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
-    log(routerArr,'routerArr')
     if (to.fullPath === lastRouterItem.fullPath) { // 返回
-      console.info('看看到底有没有清除')
       if (isIncludes(from.path)) {
-        console.info('讲道理，清除了')
         option.App.store.commit(
           UPDATE_KEEP_ALIVE_INCLUDES,
           {
@@ -49,7 +38,6 @@ const install = function (Vue,option) {
         )
       }
     } else { // 前进
-      log(routerArr,'前进前',routerArr.length,)
       routerArr.push(from)
       if (isIncludes(to.path)) {
         if (routerArr.some(item => item.fullPath === to.fullPath)) { // 存在参数和路由一样
@@ -65,7 +53,6 @@ const install = function (Vue,option) {
           )
         }
       }
-      log(routerArr,'前进后',routerArr.length)
     }
     next()
   })
@@ -74,11 +61,8 @@ const install = function (Vue,option) {
     // console.log('afterEach');
     const lastRouterItem = routerArr[routerArr.length - 1] || {}
     if (to.fullPath === lastRouterItem.fullPath) { // 返回
-      console.log('返回，等进来再删！')
-      log(routerArr,'删除之前',routerArr.length)
       // 删除最后一个记录
       routerArr = routerArr.splice(0,routerArr.length-1)
-      log(routerArr,'删除之后',routerArr.length)
     } else { // 前进
       if (isIncludes(to.path)) {
         option.App.store.commit(
@@ -90,7 +74,6 @@ const install = function (Vue,option) {
         )
       }
     }
-    log(routerArr,'最后路由列表')
   })
 
   
